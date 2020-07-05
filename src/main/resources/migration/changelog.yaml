@@ -1,0 +1,7 @@
+databaseChangeLog:
+- include:
+    file: migration/acl-core-tables.sql
+- include:
+    file: migration/users-table.sql
+- include:
+    file: migration/document-table.sql
