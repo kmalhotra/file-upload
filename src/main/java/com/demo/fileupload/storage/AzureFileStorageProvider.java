@@ -13,4 +13,9 @@ public class AzureFileStorageProvider implements StorageProvider<Document> {
     public String getFileUrl(Document instance) {
         return null;
     }
+
+    @Override
+    public void remove(Document instance) {
+        return;
+    }
 }
