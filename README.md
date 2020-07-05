@@ -12,7 +12,8 @@
 ## Setup Instructions
 
 1. Install Docker
-2. Run "docker-compose up -d"
+2. Run "docker-compose up -d". Note: This might take sometime for the first time,
+since all the dependencies are downloaded, subsiquent builds will be faster.
 3. Follow Logs "docker-compose logs -f"
 
 ##API Details:
