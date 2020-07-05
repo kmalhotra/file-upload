@@ -41,6 +41,17 @@ public class Document {
     @JsonIgnore
     private User user;
 
+    @Transient
+    private String storageUrl;
+
+    public String getStorageUrl() {
+        return storageUrl;
+    }
+
+    public void setStorageUrl(String storageUrl) {
+        this.storageUrl = storageUrl;
+    }
+
     public Long getId() {
         return id;
     }

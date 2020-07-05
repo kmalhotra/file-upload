@@ -2,6 +2,7 @@ package com.demo.fileupload;
 
 import com.demo.fileupload.common.exception.ResourceNotFoundException;
 import com.demo.fileupload.common.ErrorDetails;
+import com.demo.fileupload.common.exception.UpstreamDependencyException;
 import com.demo.fileupload.common.validator.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,12 @@ public class ApiExceptionHandler {
     public ResponseEntity<?> handleValidationException(ValidationException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    @ExceptionHandler(UpstreamDependencyException.class)
+    public ResponseEntity<?> handleUpstreamDependencyException(UpstreamDependencyException ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.SERVICE_UNAVAILABLE);
     }
 
     @ExceptionHandler(Exception.class)

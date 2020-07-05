@@ -33,7 +33,7 @@ public class DocumentController {
     @PostMapping(value = "/users/{userId}/documents", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Document> saveDocument(@PathVariable (value = "userId") Long userId, @Valid @RequestBody Document document) {
         document = documentService.save(document, userId);
-        return ResponseEntity.created(URI.create("/users/" + userId + "/document/" + document.getId())).build();
+        return ResponseEntity.created(URI.create("/users/" + userId + "/document/" + document.getId())).body(document);
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_WORKER')")
