@@ -12,9 +12,19 @@
 ## Setup Instructions
 
 1. Install Docker
-2. Run "docker-compose up -d". Note: This might take sometime for the first time,
-since all the dependencies are downloaded, subsiquent builds will be faster.
-3. Follow Logs "docker-compose logs -f"
+2. Start MySql in docker.
+```
+docker run --name file-upload-mysql -e MYSQL_ROOT_PASSWORD=admin@1234 -e MYSQL_DATABASE=demo -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin@123 -p 3310:3306 -d mysql:latest
+
+```
+3. Build docker image
+```
+docker build -f Dockerfile -t file-upload .
+```
+4. Run API server in docker
+```
+docker run --name file-upload-api -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin@123 -e DB_URL=jdbc:mysql://host.docker.internal:3310/demo -p 8080:8080 -d file-upload:latest
+```
 
 ##API Details:
 
