@@ -13,6 +13,7 @@
 
 1. Install Docker
 2. Start MySql in docker.
+
 ```
 docker run --name file-upload-mysql -e MYSQL_ROOT_PASSWORD=admin@1234 -e MYSQL_DATABASE=demo -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin@123 -p 3310:3306 -d mysql:latest
 
