@@ -31,7 +31,5 @@ jobs:
        
       - name: Push image to GitHub Container Registry
         run: | 
-          docker tag IMAGE_ID docker.pkg.github.com/kmalhotra/file-upload/file-upload:latest
-          
           docker tag file-upload docker.pkg.github.com/kmalhotra/file-upload/file-upload:latest
           docker push docker.pkg.github.com/kmalhotra/file-upload/file-upload:latest
